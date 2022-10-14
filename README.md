@@ -7,6 +7,7 @@ This role is managing the iptables persistent installation and making basic conf
 ## Requirements
 
 This role is written for Debian based operating systems.
+Ansible version => 2.10
 
 ## Note
 
@@ -19,12 +20,17 @@ export ANSIBLE_HOST_KEY_CHECKING=False
  
 ## Tested On
 
-Ubuntu 14.04
-Ubuntu 16.04
-Ubuntu 18.04
-Ubuntu 20.04
-Debian 10
-Debian 9
+Ubuntu 14.04 -
+Ubuntu 16.04 -
+Ubuntu 18.04 -
+Ubuntu 20.04 -
+Debian 10 -
+Debian 9 -
+
+## Tested with 
+
+Ansible Server Version 2.13
+Python Version 3.10
 
 ## Role Variables
 
