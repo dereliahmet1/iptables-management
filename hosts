@@ -1,0 +1,9 @@
+[all]
+instanceA ansible_ssh_host=ip_address_here ansible_ssh_user=username ansible_ssh_pass=password
+instanceB ansible_ssh_host=ip_address_here ansible_ssh_user=username ansible_ssh_pass=password
+
+[server1]
+instanceA
+
+[server2]
+instanceB

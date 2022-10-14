@@ -1,0 +1,6 @@
+# Installing the iptables persistent for applying permenent rules of iptables
+- name: Install iptables-persistent
+  apt:
+    name: iptables-persistent
+    state: "present"
+    update_cache: yes

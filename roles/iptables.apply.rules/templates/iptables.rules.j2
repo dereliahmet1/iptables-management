@@ -1,0 +1,30 @@
+*filter
+:INPUT ACCEPT [45:3287]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [95:12884]
+
+-P INPUT DROP
+-P FORWARD DROP
+-P OUTPUT ACCEPT
+
+# Default Open Ports for all servers 
+-A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+
+
+{% if inventory_hostname in groups['server1'] %}
+
+# Rules for only Server1
+-A INPUT -p tcp -m tcp --dport 1234 -j ACCEPT
+
+{% endif %}
+
+{% if inventory_hostname in groups['server2'] %}
+
+# Rules for only Server2
+-A INPUT -p tcp -m tcp --dport 4321 -j ACCEPT
+
+{% endif %}
+
+COMMIT

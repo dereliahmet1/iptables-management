@@ -1,0 +1,57 @@
+- name: Apply Jinja config for Custom Ports
+  template:
+    src: iptables.rules.j2
+    dest: /home/iptables.rules
+
+- name: Restore iptables rules from file
+  shell: iptables-restore < /home/iptables.rules
+
+
+# Below this line shows you the other way to apply configs rather then jinja2 templates 
+
+#- name: Iptables Allow HTTP
+#  iptables:
+#    chain: INPUT
+#    protocol: tcp
+#    destination_port: "80"
+#    jump: ACCEPT
+
+#- name: Iptables Allow HTTPS
+#  iptables:
+#    chain: INPUT
+#    protocol: tcp
+#    destination_port: "443"
+#    jump: ACCEPT
+
+#- name: Iptables Allow SSH
+#  iptables:
+#    chain: INPUT
+#    protocol: tcp
+#    destination_port: "22"
+#    jump: ACCEPT
+
+#- name: Iptables Custom Port for Only Server1
+#  iptables:
+#    chain: INPUT
+#    protocol: tcp
+#    destination_port: "{{ server1_custom_port }}"
+#    jump: ACCEPT
+#  when: "'server1' in group_names"
+
+#- name: Iptables Custom Port for Only Server2
+#  iptables:
+#    chain: INPUT
+#    protocol: tcp
+#    destination_port: "{{ server2_custom_port }}"
+#    jump: ACCEPT
+#  when: "'server2' in group_names"
+
+#- name: Drop ALL Input Chain
+#  iptables:
+#     chain: INPUT
+#     policy: DROP
+
+#- name: Drop ALL Forward Chain
+#  iptables:
+#     chain: FORWARD
+#     policy: DROP

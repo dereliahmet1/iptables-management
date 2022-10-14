@@ -1,0 +1,15 @@
+- name: Apply Iptables Installation and Rules
+  hosts: all
+  become: false
+  gather_facts: false
+  roles:
+    
+    - role: iptables.install
+      when: installation|default(false)|bool
+    
+    - role: iptables.apply.rules
+      when: configuration|default(false)|bool
+ 
+  vars:
+    - installation: 1
+    - configuration: 1
